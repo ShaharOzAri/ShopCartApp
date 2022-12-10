@@ -5,21 +5,18 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import { useAuth } from "../Utils/auth";
+// import { useAuth } from "../Utils/auth";
 import { useNavigate } from "react-router-dom";
 
 const ProductCard = (props) => {
   const product = props.product;
-  const auth = useAuth();
+  // const auth = useAuth();
   const navigate = useNavigate();
 
   const handleClick = () => {
     navigate(`../product/${product._id}`);
   };
 
-  const handleClickAdmin = () => {
-    navigate(`/admin/product/${product._id}`);
-  };
 
   return product != null ? (
     <Card sx={{ maxWidth: 370, mx: 5 }}>
@@ -48,7 +45,6 @@ const ProductCard = (props) => {
         </Typography>
       </CardContent>
       <CardActions sx={{ justifyContent: "center" }}>
-        {!auth.user || JSON.parse(auth.getUser()).role == "client" ? (
           <Button
             variant="outlined"
             size="small"
@@ -58,17 +54,6 @@ const ProductCard = (props) => {
           >
             Quick View
           </Button>
-        ) : (
-          <Button
-            variant="outlined"
-            size="small"
-            color="secondary"
-            sx={{ color: "black" }}
-            onClick={handleClickAdmin}
-          >
-            Edit
-          </Button>
-        )}
       </CardActions>
     </Card>
   ) : (
