@@ -2,10 +2,11 @@ const mongoose = require("mongoose");
 const SchemaTypes = mongoose.Schema.Types;
 
 const OrderSchema = new mongoose.Schema({
-  date: Date,
-  productIds: Array,
+  products: Array,
   totalSum: Number,
-  userEmail: {type: String},
+  first_name: String,
+  last_name: String,
+  email: String,
   address: String,
 });
 

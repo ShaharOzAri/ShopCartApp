@@ -24,12 +24,9 @@ mongoose
   .catch((error) => console.log("dont succeed to connect"));
 
 //Routes API
-// const userAPI = require("./Controller/UserController");
 const productAPI = require("./Controller/ProductController");
 const orderAPI = require("./Controller/OrderController");
 
 //Route use
-app.use("/user", userAPI);
 app.use("/product", productAPI);
 app.use("/order", orderAPI);
-

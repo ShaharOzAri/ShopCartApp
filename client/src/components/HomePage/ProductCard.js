@@ -5,24 +5,22 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-// import { useAuth } from "../Utils/auth";
-import { useNavigate } from "react-router-dom";
+import { useAuth } from "../Utils/auth";
 
 const ProductCard = (props) => {
   const product = props.product;
-  // const auth = useAuth();
-  const navigate = useNavigate();
+  const cartItems = props.cartItems;
+  const auth = useAuth();
 
   const handleClick = () => {
-    navigate(`../product/${product._id}`);
+    auth.addCartProduct(product);
   };
-
 
   return product != null ? (
     <Card sx={{ maxWidth: 370, mx: 5 }}>
       <CardMedia
         component="img"
-        height="250"
+        height="300"
         image={product.images[0]}
         alt="Classic Name Necklace"
       />
@@ -45,15 +43,15 @@ const ProductCard = (props) => {
         </Typography>
       </CardContent>
       <CardActions sx={{ justifyContent: "center" }}>
-          <Button
-            variant="outlined"
-            size="small"
-            color="secondary"
-            sx={{ color: "black" }}
-            onClick={handleClick}
-          >
-            Quick View
-          </Button>
+        <Button
+          variant="outlined"
+          size="small"
+          color="secondary"
+          sx={{ color: "black" }}
+          onClick={handleClick}
+        >
+          Add to Cart
+        </Button>
       </CardActions>
     </Card>
   ) : (

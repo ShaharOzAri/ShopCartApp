@@ -1,15 +1,12 @@
-// import CheckoutPage from "./pages/CheckoutPage";
+import CheckoutPage from "./components/Checkout/CheckoutPage";
 import * as React from "react";
 import "./App.css";
 import { Route, BrowserRouter, Routes } from "react-router-dom";
-// import HomePage from "./components/HomePage/HomePageContent";
 import { createTheme, ThemeProvider, styled } from "@mui/material/styles";
-// import CategoryPage from "./components/Category/CategoryPage";
-// import { AuthProvider } from "./components/Utils/auth";
-// import ProductPage from "./components/product/ProductPage";
-// import OrderPage from "./pages/OrderPage";
+import { AuthProvider } from "./components/Utils/auth";
+import NavigationBar from "./components/NavBar/NavigationBar";
 import ShopPage from "./components/HomePage/ShopPage";
-
+import OrderRecived from "./components/Checkout/OrderRecived";
 
 const customTheme = createTheme({
   palette: {
@@ -29,23 +26,20 @@ const MyThemeComponent = styled("div")(({ theme }) => ({
 
 function App() {
   return (
-    //<AuthProvider>
+    <AuthProvider>
       <ThemeProvider theme={customTheme}>
         <MyThemeComponent>
           <BrowserRouter>
+            <NavigationBar></NavigationBar>
             <Routes>
               <Route exact path="/" element={<ShopPage />} />
-              {/* <Route path="/category/:category" element={<CategoryPage />} />
-              <Route path="/product/:id" element={<ProductPage />} />
               <Route path="/checkout" element={<CheckoutPage />} />
-              <Route path="/orders" element={<OrderPage />} />
-              <Route path="/checkout" element={<CheckoutPage />} />
-              <Route path="/checkout/order/:orderId" element={<OrderPage />} />         */}
+              <Route path="/order" element={<OrderRecived />} />
             </Routes>
           </BrowserRouter>
         </MyThemeComponent>
       </ThemeProvider>
-    //</AuthProvider>
+    </AuthProvider>
   );
 }
 
